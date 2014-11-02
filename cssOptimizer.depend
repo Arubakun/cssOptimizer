@@ -1,0 +1,28 @@
+# depslib dependency file v1.0
+1414742911 source:c:\users\alban\documents\github\cssoptimizer\main.c
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"tags.h"
+
+1414424497 source:c:\users\alban\documents\github\cssoptimizer\balise.c
+	"balise.h"
+	<stdlib.h>
+
+1414398099 c:\users\alban\documents\github\cssoptimizer\balise.h
+
+1414769492 c:\users\alban\documents\github\cssoptimizer\tags.h
+
+1414743386 source:c:\users\alban\documents\github\cssoptimizer\tag_properties.c
+	"tag_properties.h"
+
+1414742688 source:c:\users\alban\documents\github\cssoptimizer\tags.c
+	"tags.h"
+	<stdio.h>
+
+1414436134 c:\users\alban\documents\github\cssoptimizer\main.h
+
+1414482353 c:\users\alban\documents\github\cssoptimizer\tag_properties.h
+	"tags.h"
+	<stdio.h>
+
