@@ -1,9 +1,6 @@
 # depslib dependency file v1.0
-1414742911 source:c:\users\alban\documents\github\cssoptimizer\main.c
-	<stdio.h>
-	<stdlib.h>
-	<string.h>
-	"tags.h"
+1415643487 source:c:\users\alban\documents\github\cssoptimizer\main.c
+	"main.h"
 
 1414424497 source:c:\users\alban\documents\github\cssoptimizer\balise.c
 	"balise.h"
@@ -11,18 +8,33 @@
 
 1414398099 c:\users\alban\documents\github\cssoptimizer\balise.h
 
-1414769492 c:\users\alban\documents\github\cssoptimizer\tags.h
+1415342597 c:\users\alban\documents\github\cssoptimizer\tags.h
 
-1414743386 source:c:\users\alban\documents\github\cssoptimizer\tag_properties.c
+1415643661 source:c:\users\alban\documents\github\cssoptimizer\tag_properties.c
 	"tag_properties.h"
 
-1414742688 source:c:\users\alban\documents\github\cssoptimizer\tags.c
+1415643617 source:c:\users\alban\documents\github\cssoptimizer\tags.c
 	"tags.h"
 	<stdio.h>
 
-1414436134 c:\users\alban\documents\github\cssoptimizer\main.h
+1415123536 c:\users\alban\documents\github\cssoptimizer\main.h
+	<stdio.h>
+	<stdlib.h>
+	<string.h>
+	"tags.h"
+	"tag_properties.h"
+	"tags_functions.h"
 
-1414482353 c:\users\alban\documents\github\cssoptimizer\tag_properties.h
+1415124039 c:\users\alban\documents\github\cssoptimizer\tag_properties.h
 	"tags.h"
 	<stdio.h>
+
+1415602638 c:\users\alban\documents\github\cssoptimizer\tags_functions.h
+	"main.h"
+
+1415641832 source:c:\users\alban\documents\github\cssoptimizer\tags_functions.c
+	"tags_functions.h"
+
+1415123288 c:\users\alban\documents\github\cssoptimizer\main.c
+	"main.h"
 

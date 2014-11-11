@@ -1,5 +1,5 @@
-#ifndef LIST_H_INCLUDED
-#define LIST_H_INCLUDED
+#ifndef TAGS_H_INCLUDED
+#define TAGS_H_INCLUDED
 
 typedef struct properties properties;
 typedef struct properties* p_properties;
@@ -10,7 +10,7 @@ typedef struct tag* p_tag;
 
 struct properties
 {
-    int     nb;
+    int     length;
     char*** listProps;
 };
 
@@ -19,7 +19,6 @@ struct tag
     char*           name;
     p_properties    properties;
     p_children      children;
-    p_tag           parent;
 };
 
 struct children
@@ -28,8 +27,10 @@ struct children
     p_tag*  listChildren;
 };
 
+p_children initChildren(p_children);
 p_tag newTag(char*/*, properties, children, tag*/);
-p_children addChild(p_children, p_tag);
+p_children appendChild(p_children, p_tag);
+p_tag getChildById(p_children, int);
 p_children removeChildById(p_children, int);
 p_children removeChildByName(p_children, char*);
 p_children freeChildren(p_children);

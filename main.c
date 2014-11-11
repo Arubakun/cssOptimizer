@@ -20,30 +20,40 @@ char* my_striconcat(char* v1, char* v2, int start) {
 int main()
 {
     p_children list = NULL;
+    p_properties p1 = NULL, p2 = NULL;
+    p_tag t1 = NULL;
 
-    list = addChild(list, newTag("test"));
-    showChildren(list);
-
-    list = addChild(list, newTag("test2"));
-    showChildren(list);
-
-    list = addChild(list, newTag("test3"));
-    list->listChildren[2]->properties = addProperty(list->listChildren[2]->properties, "testp", "rien");
-    list->listChildren[2]->properties = addProperty(list->listChildren[2]->properties, "testp2", "rien2");
+    list = initChildren(list);
+    appendChild(list, newTag("test"));
+    appendChild(list, newTag("test2"));
+    appendChild(list, newTag("test3"));
+    appendChild(list, newTag("test2"));
 
     showChildren(list);
 
-    list = removeChildById(list, 1);
+    t1 = getChildIdChildren(list, 0);
+    appendChild(t1, newTag("test_1"));
+    appendChild(t1, newTag("test_1"));
 
+    showChildren(t1);
+
+    p1 = getChildIdProperties(list, 1);
+    appendProperty(p1, "p1", "v1");
+
+    p2 = getChildIdProperties(list, 3);
+    appendProperty(p2, "p2", "v2");
+    appendProperty(p2, "p1", "v3");
+    appendProperty(p2, "p1", "v1");
+    appendProperty(p2, "p2", "v2");
+    appendProperty(p2, "p3", "v3");
+
+    matchTwinChildren(list, "test2");
+    factorizeProperties(list);
     showChildren(list);
 
     freeChildren(list);
-    list = addChild(list, newTag("test5"));
+    free(p1); free(p2);
 
-    showChildren(list);
-    freeChildren(list);
-
-    free(list);
     return 0;
 }
 

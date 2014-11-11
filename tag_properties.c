@@ -1,37 +1,118 @@
 #include "tag_properties.h"
 
-p_properties addProperty(p_properties p, char* p_name, char* p_value)
+p_properties getChildIdProperties(p_children c, int id) {
+    if(id < 0 || id >= c->length) {return NULL;}
+    return c->listChildren[id]->properties;
+}
+
+p_properties getProperties(p_tag t) {
+    return t->properties;
+}
+
+void showProperties(p_properties p)
 {
-    p_properties    tmp_p;
-    char**          n_prop = malloc(sizeof(char*)*2);
-    n_prop[0] = p_name;
-    n_prop[1] = p_value;
-
-    if(p == NULL)
+    int i = 0; while(i<p->length)
     {
-        printf("\t\tnew prop\n");
-        p = malloc(sizeof(properties));
-        p->nb = 0;
-    }
-
-    p->nb++;
-
-    tmp_p = malloc(sizeof(char**)*(p->nb));
-
-    int i = 0; while(i<p->nb)
-    {
-        tmp_p->listProps[i] = malloc(sizeof(char*)*2);
-        tmp_p->listProps[i] = p->listProps[i];
-
+        printf("property %s = %s\n", p->listProps[i][0], p->listProps[i][1]);
         i++;
     }
 
-    printf("\nDebut %i", i-1);
-    tmp_p->listProps[p->nb-1] = malloc(sizeof(char*)*2);
-    printf("\tname %s", n_prop[0]);
-    tmp_p->listProps[p->nb-1] = n_prop;
-    printf("\tFin\n");
+    printf("\n");
+}
 
-    p = tmp_p;
+p_properties initProperties(p_properties p) {
+
+    p = malloc(sizeof(properties));
+    p->length = 0;
+    p->listProps = NULL;
+
+    return p;
+}
+
+p_properties appendProperty(p_properties p, char* p_name, char* p_value)
+{
+    char*** tmp_p;
+
+    p->length++;
+    tmp_p = malloc(sizeof(char**)*(p->length));
+
+    int i = 0; while(i<p->length-1)
+    {
+        tmp_p[i] = malloc(sizeof(char*)*2);
+        tmp_p[i] = p->listProps[i++];
+    }
+
+    tmp_p[p->length-1] = malloc(sizeof(char*)*2);
+    tmp_p[p->length-1][0] = p_name;
+    tmp_p[p->length-1][1] = p_value;
+
+    free(p->listProps);
+    p->listProps = tmp_p;
+
+    return p;
+}
+
+p_properties removePropertyById(p_properties p, int id)
+{
+    char***  tmp_list;
+
+    tmp_list = malloc(sizeof(char**)*(p->length - 1));
+    int i = 0, j = 0; while(j<p->length)
+    {
+        if(j != id)
+        {
+            tmp_list[i] = p->listProps[j];
+            i++;
+        }
+
+        else { free(p->listProps[j]); }
+
+        j++;
+    }
+
+    free(p->listProps);
+    p->listProps = tmp_list;
+    p->length--;
+    return p;
+}
+
+p_properties removePropertyByName(p_properties p, char* name)
+{
+    char***  tmp_list;
+
+    tmp_list = malloc(sizeof(char**)*(p->length - 1));
+    int i = 0, j = 0; while(j<p->length)
+    {
+        if(p->listProps[j][0] != name)
+        {
+            tmp_list[i] = p->listProps[j];
+            i++;
+        }
+        else { free(p->listProps[j]); }
+
+        j++;
+    }
+
+    free(p->listProps);
+    p->listProps = tmp_list;
+    p->length--;
+    return p;
+}
+
+p_properties freeProperties(p_properties p)
+{
+    if(p != NULL) {
+        int i = 0; while(i < p->length)
+        {
+            free(p->listProps[i][0]);
+            free(p->listProps[i][1]);
+            free(p->listProps[i++]);
+        }
+
+        p->length = 0;
+        free(p->listProps);
+        free(p);
+    }
+
     return p;
 }

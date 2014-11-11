@@ -43,6 +43,10 @@
 			<Option compilerVar="CC" />
 		</Unit>
 		<Unit filename="tags.h" />
+		<Unit filename="tags_functions.c">
+			<Option compilerVar="CC" />
+		</Unit>
+		<Unit filename="tags_functions.h" />
 		<Extensions>
 			<code_completion />
 			<envvars />
